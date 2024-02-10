@@ -1,0 +1,292 @@
+/* Add CSS stylesheet */
+
+* {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  height: 10%;
+  width: 100%;
+  background: #dddddd;
+}
+
+.title {
+  font-size: 32px;
+  font-weight: 800;
+}
+
+.main {
+  display: flex;
+  flex-direction: row;
+  height: 90%;
+}
+
+.sideBarNav {
+  display: flex;
+  flex-direction: column;
+  width: 15%;
+  border-right: dashed;
+  padding: 4% 0 4% 0;
+  align-items: center;
+}
+
+.menu_button:first-child {
+  margin-top: 0;
+}
+
+.menu_button {
+  height: 40px;
+  width: 80%;
+  margin-top: 20px;
+  border-radius: 5px;
+  text-align: center;
+  line-height: 40px;
+  color: cornflowerblue;
+}
+
+.menu_selected {
+  background: #cccccc;
+}
+
+.right_main {
+  width: 85%;
+  overflow: auto;
+}
+
+.space_between {
+  display: flex;
+  justify-content: space-between;
+}
+
+.right_padding {
+  padding: 2% 0 2% 2%;
+}
+
+.bold_title {
+  font-size: 24px;
+  font-weight: 800;
+  line-height: 40px;
+}
+
+.bluebtn {
+  background: #3090e2;
+  color: #ffffff;
+  border: #000000 1px solid;
+  font-size: 20px;
+  padding: 10px 10px 10px 10px;
+  margin-right: 5%;
+}
+
+/*Ganavi*/
+
+.question_form,
+.answer_form {
+  background-color: #f4f4f4;
+  padding: 20px;
+  width: 60%; /* Adjust as per requirement */
+  margin: 20px auto; /* Centers the form on the page */
+}
+
+.form_question_title_label,
+.form_text_label,
+.form_question_tags_label,
+.form_username_lable {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: bold;
+}
+
+.form_question_title_input,
+.form_text_input,
+.form_question_tags_input,
+.form_username_input {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.form_question_text_input {
+  height: 100px; /* Adjust as per requirement */
+  resize: none; /* To disable manual resizing */
+}
+
+.form_question_tags_hint,
+.form_question_text_hint,
+.form_question_title_hint {
+  font-size: 14px;
+  color: black;
+  margin-bottom: 5px;
+  font-style: italic;
+  margin-left: 10px;
+}
+
+.input-error {
+  color: red;
+  margin-bottom: 30px;
+}
+
+.btn_indicator_container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* This will push child elements to the extremes of the container */
+  width: 100%;
+}
+
+.form_postBtn {
+  background: #3090e2;
+  color: #ffffff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.mandatory_indicator {
+  font-size: 0.8rem;
+  color: red;
+  margin-top: 10px;
+}
+
+/*end of ganavi*/
+
+.btns {
+  margin-right: 15%;
+}
+
+.btn {
+  background: #ffffff;
+  border: #000000 1px solid;
+}
+
+.question_list:last-child {
+  border-bottom: #000000 1px dashed;
+}
+
+.question {
+  display: flex;
+  flex-direction: row;
+  border-top: #000000 1px dashed;
+}
+
+.postStats {
+  color: #bbbbbb;
+  text-align: center;
+  width: 10%;
+}
+
+.question_mid {
+  width: 60%;
+}
+
+.postTitle {
+  color: cornflowerblue;
+}
+
+.question_tags {
+  margin-top: 1%;
+}
+
+.question_tag_button {
+  color: #ffffff;
+  background: gray;
+  border-width: 0;
+  border-radius: 8px;
+  margin-left: 2%;
+  padding: 1% 3% 1% 3%;
+}
+
+.question_tag_button:first-child {
+  margin-left: 0;
+}
+
+.lastActivity {
+  width: 30%;
+  display: flex;
+  flex-direction: row;
+}
+
+.question_author {
+  color: red;
+}
+
+.question_meta {
+  color: #bbbbbb;
+}
+
+.tag_list {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 80px 20px;
+}
+
+.tagNode {
+  place-self: center;
+  border: #000000 1px dashed;
+  padding: 5%;
+  width: 30%;
+  display: flex;
+  flex-direction: column;
+  justify-items: center;
+  align-items: center;
+}
+
+.tagName {
+  color: cornflowerblue;
+}
+
+.answer_question_title {
+  max-width: 60%;
+}
+
+.questionBody {
+  display: flex;
+  flex-direction: row;
+  /* justify-content: space-between;  */
+  margin-top: 5%;
+  border-bottom: #000000 1px dashed;
+}
+
+.answer_question_meta {
+  color: #bbbbbb;
+}
+
+.answer_question_view {
+  width: 15%;
+}
+
+.answer_question_text {
+  width: 60%;
+}
+
+.answer_question_right {
+  display: flex;
+  flex-direction: column;
+  margin-left: 5%;
+}
+
+.answer {
+  display: flex;
+  flex-direction: row;
+  border-bottom: #000000 1px dashed;
+}
+
+.answerText {
+  width: 75%;
+}
+
+.answerAuthor {
+  margin-left: 5%;
+}
+
+.answer_author {
+  color: green;
+}
+
+.ansButton {
+  margin: 2% 0 2% 2%;
+}
