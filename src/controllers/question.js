@@ -1,5 +1,4 @@
 import data from "../data/model.js";
-import Answer from "../models/answer.js";
 import Application from "../models/application.js";
 import { setMenuButton, askQuestionBtn, createEle, appendEleChild, displayError, clearAllErrors } from "../util/domops.js";
 import { loadAnswersPage } from './answer.js'; 
@@ -70,35 +69,6 @@ const loadNewQuestionPage = () => {
   });
   form.appendChild(usernameInput);
 
-  // Create error message elements
-  let titleError = createEle({
-    type: "div",
-    id: "titleError",
-    classes: ["error_message"],
-  });
-  form.appendChild(titleError);
-
-  let questionError = createEle({
-    type: "div",
-    id: "questionError",
-    classes: ["error_message"],
-  });
-  form.appendChild(questionError);
-
-  let tagsError = createEle({
-    type: "div",
-    id: "tagsError",
-    classes: ["error_message"],
-  });
-  form.appendChild(tagsError);
-
-  let usernameError = createEle({
-    type: "div",
-    id: "usernameError",
-    classes: ["error_message"],
-  });
-  form.appendChild(usernameError);
-
   // Create button element for posting question
   let postQuestionBtn = createEle({
     type: "button",
@@ -117,33 +87,39 @@ const loadNewQuestionPage = () => {
     let isValid = true;
 
     if (titleInput.value.length === 0) {
-      titleError.innerHTML = "Title cannot be empty";
+      //titleError.innerHTML = "Title cannot be empty";
+      displayError(titleInput, "Title cannot be empty");
       isValid = false;
     } 
 
     if (titleInput.value.length >= 100) {
-      titleError.innerHTML = "Title cannot be more than 100 characters";
+      //titleError.innerHTML = "Title cannot be more than 100 characters";
+      displayError(titleInput, "Title cannot be more than 100 characters");
       isValid = false;
     }
 
     if (questionInput.value.trim().length === 0) {
-      questionError.innerHTML = "Question text cannot be empty";
+      //questionError.innerHTML = "Question text cannot be empty";
+      displayError(questionInput, "Question text cannot be empty");
       isValid = false;
     }
 
     let tags = tagsInput.value.trim().split(" ");
     if (tags.length > 5) {
-      tagsError.innerHTML = "Cannot have more than 5 tags";
+      //tagsError.innerHTML = "Cannot have more than 5 tags";
+      displayError(tagsInput, "Cannot have more than 5 tags");
       isValid = false;
     }
     
     if (tags.some((tag) => tag.length > 20)) {
-      tagsError.innerHTML = "New tag length cannot be more than 20";
+      //tagsError.innerHTML = "New tag length cannot be more than 20";
+      displayError(tagsInput, "New tag length cannot be more than 20");
       isValid = false;
     }
 
     if (usernameInput.value.trim().length === 0) {
-      usernameError.innerHTML = "Username cannot be empty";
+      //usernameError.innerHTML = "Username cannot be empty";
+      displayError(usernameInput, "Username cannot be empty");
       isValid = false;
     }
 

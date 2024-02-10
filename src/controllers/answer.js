@@ -1,6 +1,6 @@
 import data from "../data/model.js";
 import Application from "../models/application.js";
-import { setMenuButton, askQuestionBtn, createEle, appendEleChild, displayError, clearAllErrors } from "../util/domops.js";
+import { setMenuButton, askQuestionBtn, createEle, appendEleChild, displayError, } from "../util/domops.js";
 
 const app = new Application(data);
 
@@ -158,11 +158,6 @@ const loadNewAnswerPage = (qid) => {
     classes: ["form_username_input"],
     //attributes: { placeholder: "Enter username" },
   });
-  let usernameError = createEle({
-    type: "div",
-    id: "answerUsernameError",
-  });
-  form.appendChild(usernameError);
 
   // Answer text
   let textLabel = createEle({
@@ -176,11 +171,6 @@ const loadNewAnswerPage = (qid) => {
     //attributes: { placeholder: "Add details" },
     classes: ["form_text_input"],
   });
-  let textError = createEle({
-    type: "div",
-    id: "answerTextError",
-  });
-  form.appendChild(textError);
 
   let btnIndicatorContainer = createEle({
     type: "div",
@@ -200,11 +190,13 @@ const loadNewAnswerPage = (qid) => {
     let isValid = true;
 
     if (usernameInput.value === "") {
-      usernameError.innerHTML = "Username cannot be empty";
+      //usernameError.innerHTML = "Username cannot be empty";
+      displayError(usernameInput, "Username cannot be empty");
       isValid = false;
     }
     if (textInput.value === "") {
-      textError.innerHTML = "Answer text cannot be empty";
+      //textError.innerHTML = "Answer text cannot be empty";
+      displayError(textInput, "Answer text cannot be empty");
       isValid = false;
     }
 

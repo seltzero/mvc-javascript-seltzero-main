@@ -1,6 +1,6 @@
 import data from "../data/model.js";
 import Application from "../models/application.js";
-import { setMenuButton, askQuestionBtn, createEle, appendEleChild } from "../util/domops.js";
+import { askQuestionBtn, createEle, appendEleChild } from "../util/domops.js";
 import { loadQuestionPage } from "./question.js";
 
 const app = new Application(data);

@@ -1,10 +1,10 @@
-import data from "../data/model.js";
-import Application from "../models/application.js";
+//import data from "../data/model.js";
+//import Application from "../models/application.js";
 import { loadQuestionPage } from "./question.js";
 import { loadTagPage } from "./tag.js";
-import { setMenuButton, askQuestionBtn, createEle, appendEleChild } from "../util/domops.js";
+import { createEle, appendEleChild, setMenuButton } from "../util/domops.js";
 
-const app = new Application(data);
+//const app = new Application(data);
 
 window.onload = function () {
   loadFrame();
@@ -51,8 +51,7 @@ const loadFrame = () => {
     event: {
       click: () => {
         loadQuestionPage();
-        tagbtn.classList.remove("menu_selected");
-        questionbtn.classList.add("menu_selected");
+        setMenuButton("question");
       },
     },
   });
@@ -64,8 +63,7 @@ const loadFrame = () => {
     event: {
       click: () => {
         loadTagPage();
-        questionbtn.classList.remove("menu_selected");
-        tagbtn.classList.add("menu_selected");
+        setMenuButton("tag");
       },
     },
   });
