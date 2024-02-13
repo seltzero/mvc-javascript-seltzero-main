@@ -20,60 +20,85 @@ const loadNewQuestionPage = () => {
     classes: ["question_form"],
   });
 
+  let titleLabel = createEle({
+    type: "label",
+    innerHTML: "Question Title*",
+    classes: ["form_question_title_label"],
+  });
   // Create input element for question title
   let titleInput = createEle({
     type: "input",
     id: "formTitleInput",
+    classes: ["form_question_title_input"],
     attributes: {
       type: "text",
-      placeholder: "Question Title",
+      placeholder: "Limit to 100 characters or less",
       maxLength: 100,
-      //required: true,
     },
   });
+  form.appendChild(titleLabel);
   form.appendChild(titleInput);
+  
 
+  let questionLabel = createEle({
+    type: "label",
+    innerHTML: "Question*",
+    classes: ["form_text_label"],
+  });
   // Create input element for question text
   let questionInput = createEle({
     type: "input",
     id: "formTextInput",
+    classes: ["form_text_input"],
     attributes: {
       type: "text",
-      placeholder: "Question Text",
-      //required: true,
+      placeholder: "Add details",
     },
   });
+  form.appendChild(questionLabel);
   form.appendChild(questionInput);
 
+  let tagsLabel = createEle({
+    type: "label",
+    innerHTML: "Tags*",
+    classes: ["form_question_tags_label"],
+  });
   // Create input element for tags
   let tagsInput = createEle({
     type: "input",
     id: "formTagInput",
+    classes: ["form_question_tags_input"],
     attributes: {
       type: "text",
-      placeholder: "Tags (max 5, max 20 characters each)",
-      //required: true,
+      placeholder: "Add keywords separated by whitespace (max 5, max 20 characters each)",
     },
   });
+  form.appendChild(tagsLabel);
   form.appendChild(tagsInput);
 
+  let usernameLabel = createEle({
+    type: "label",
+    innerHTML: "Username*",
+    classes: ["form_username_lable"],
+  });
   // Create input element for username
   let usernameInput = createEle({
     type: "input",
     id: "formUsernameInput",
+    classes: ["form_username_input"],
     attributes: {
       type: "text",
-      placeholder: "Username",
-      //required: true,
+      placeholder: "Enter Username Here",
     },
   });
+  form.appendChild(usernameLabel);
   form.appendChild(usernameInput);
 
   // Create button element for posting question
   let postQuestionBtn = createEle({
     type: "button",
     id: "postQuestionBtn",
-    classes: ["btn"],
+    classes: ["form_postbtn"],
     innerHTML: "Post Question",
   });
   form.appendChild(postQuestionBtn);
@@ -87,43 +112,35 @@ const loadNewQuestionPage = () => {
     let isValid = true;
 
     if (titleInput.value.length === 0) {
-      //titleError.innerHTML = "Title cannot be empty";
       displayError(titleInput, "Title cannot be empty");
       isValid = false;
     } 
 
     if (titleInput.value.length >= 100) {
-      //titleError.innerHTML = "Title cannot be more than 100 characters";
       displayError(titleInput, "Title cannot be more than 100 characters");
       isValid = false;
     }
 
     if (questionInput.value.trim().length === 0) {
-      //questionError.innerHTML = "Question text cannot be empty";
       displayError(questionInput, "Question text cannot be empty");
       isValid = false;
     }
 
     let tags = tagsInput.value.trim().split(" ");
     if (tags.length > 5) {
-      //tagsError.innerHTML = "Cannot have more than 5 tags";
       displayError(tagsInput, "Cannot have more than 5 tags");
       isValid = false;
     }
     
     if (tags.some((tag) => tag.length > 20)) {
-      //tagsError.innerHTML = "New tag length cannot be more than 20";
       displayError(tagsInput, "New tag length cannot be more than 20");
       isValid = false;
     }
 
     if (usernameInput.value.trim().length === 0) {
-      //usernameError.innerHTML = "Username cannot be empty";
       displayError(usernameInput, "Username cannot be empty");
       isValid = false;
     }
-
-    console.log("HERE");
 
     if (isValid) {
       // Perform form submission logic
@@ -132,17 +149,19 @@ const loadNewQuestionPage = () => {
       // set the newqid to the length of the questions array + 1
       let newqid = "q" + (app.getQuestionCount() + 1);
 
-      // go through tags in app.getTags() and add them to the tags array with app.addtag() if they don't already exist
-      tags.forEach((tag) => {
-        if (!app.getTags().some((t) => t.name === tag)) {
-          app.addTag(tag);
-        }
-      });
-      
+      let tagIds = [];
 
-      // make an array of tag ids from the tags array
-      let tagIds = tags.map((tag) => app.getTags().find((t) => t.name === tag).tid);
-      console.log(tagIds);
+      // if there are tags, add them to the tags array
+      if (!(tags.length == 1 && tags[0] == "")) {
+        // go through tags in app.getTags() and add them to the tags array with app.addtag() if they don't already exist
+        tags.forEach((tag) => {
+          if (!app.getTags().some((t) => t.name === tag)) {
+            app.addTag(tag);
+          }
+        });
+        // make an array of tag ids from the tags array
+        tagIds = tags.map((tag) => app.getTags().find((t) => t.name === tag).tid);
+      }
 
       // Define the properties for the new question
       const questionData = {

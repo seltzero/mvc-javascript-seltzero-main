@@ -32,7 +32,6 @@ export default class Application {
 
     this.answers.push(new Answer(answer));
     this.getQuestionById(qid).addAnswer(answer.aid);
-    console.log(this);
   };
 
   // add a new question
@@ -43,7 +42,6 @@ export default class Application {
   addTag = (tagname) => {
     let newtag = new Tag({ tid: "t" + (this.tags.length+1), name: tagname });
     this.tags.push(newtag);
-    console.log(this.tags);
     //return tagId;
   };
 
@@ -128,9 +126,7 @@ export default class Application {
     if (question == null) {
       return [];
     }
-    console.log(question.ansIds);
     const answerObjects = question.ansIds.map((aid) => this.getAnswerByID(aid));
-    console.log(answerObjects);
     return answerObjects;
   };
 
@@ -143,7 +139,6 @@ export default class Application {
   };
 
   getTagById = (id) => {
-    console.log("getting tag with id: " + id);
     for (let t of this.tags) {
       if (t.tid == id) {
         return t;

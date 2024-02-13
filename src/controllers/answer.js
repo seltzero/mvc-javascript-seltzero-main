@@ -5,7 +5,6 @@ import { setMenuButton, askQuestionBtn, createEle, appendEleChild, displayError,
 const app = new Application(data);
 
 const loadAnswersPage = (qid) => {
-  console.log("Loading answers page for question id: " + qid);
   let main = createEle({
     type: "div",
     id: "right_main",
@@ -15,8 +14,6 @@ const loadAnswersPage = (qid) => {
 
   let question = app.getQuestionById(qid);
   let ans = app.getQuestionAnswer(question);
-
-  console.log(ans);
 
   // sort the ans variable by question date
   ans.sort((a, b) => {
@@ -156,7 +153,6 @@ const loadNewAnswerPage = (qid) => {
     type: "input",
     id: "answerUsernameInput",
     classes: ["form_username_input"],
-    //attributes: { placeholder: "Enter username" },
   });
 
   // Answer text
@@ -168,7 +164,6 @@ const loadNewAnswerPage = (qid) => {
   let textInput = createEle({
     type: "textarea",
     id: "answerTextInput",
-    //attributes: { placeholder: "Add details" },
     classes: ["form_text_input"],
   });
 
@@ -190,28 +185,18 @@ const loadNewAnswerPage = (qid) => {
     let isValid = true;
 
     if (usernameInput.value === "") {
-      //usernameError.innerHTML = "Username cannot be empty";
       displayError(usernameInput, "Username cannot be empty");
       isValid = false;
     }
     if (textInput.value === "") {
-      //textError.innerHTML = "Answer text cannot be empty";
       displayError(textInput, "Answer text cannot be empty");
       isValid = false;
     }
 
-    // Add your code for the operation here
-
-    // Placeholder comment for the operation
     if (isValid) {
-      //app.addAnswer(qid, username, answerText);
-      //loadAnswersPage(qid);
-
-      let newaid = "a" + (app.answers.length + 1);
-
       //define the properties for the new answer
       let newAnswer = {
-        aid: newaid,
+        aid: "a" + (app.answers.length + 1),
         text: textInput.value,
         ansBy: usernameInput.value,
         ansDate: new Date(),
